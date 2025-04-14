@@ -19,22 +19,26 @@ This activity helps build a dynamic "To-Do List Filter" based on different crite
 // ============================================
 
 const todos = [
-    { task: "Wash the dishes", completed: false, priority: 3 },
-    { task: "Write a blog post", completed: true, priority: 1 },
-    { task: "Buy groceries", completed: false, priority: 2 },
-    { task: "Study JavaScript", completed: true, priority: 1 },
-    { task: "Walk the dog", completed: false, priority: 2 },
-  ];
+  { task: "Wash the dishes", completed: false, priority: 3 },
+  { task: "Write a blog post", completed: true, priority: 1 },
+  { task: "Buy groceries", completed: false, priority: 2 },
+  { task: "Study JavaScript", completed: true, priority: 1 },
+  { task: "Walk the dog", completed: false, priority: 2 },
+];
 
-  let taskNames = todos
+// 1. Get names of incomplete tasks
+let taskNames = todos
   .filter(todo => !todo.completed)
   .map(todo => todo.task);
 
-  let sortedByPriority = todos.sort((a, b) => a.priority - b.priority);
+// 2. Sort todos by priority (copying the array first)
+let sortedByPriority = [...todos].sort((a, b) => a.priority - b.priority);
 
-  let updatedTodos = todos.map(todo => ({ ...todo, completed: true }));
+// 3. Mark all tasks as completed
+let updatedTodos = todos.map(todo => ({ ...todo, completed: true }));
 
-  let uncompletedTasks = todos
+// 4. Get incomplete tasks sorted by priority
+let uncompletedTasks = [...todos]
   .filter(todo => !todo.completed)
   .sort((a, b) => a.priority - b.priority);
 
