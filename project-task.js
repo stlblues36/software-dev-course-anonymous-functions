@@ -25,6 +25,26 @@ const todos = [
     { task: "Study JavaScript", completed: true, priority: 1 },
     { task: "Walk the dog", completed: false, priority: 2 },
   ];
+
+  let taskNames = todos
+  .filter(todo => !todo.completed)
+  .map(todo => todo.task);
+
+  let sortedByPriority = todos.sort((a, b) => a.priority - b.priority);
+
+  let updatedTodos = todos.map(todo => ({ ...todo, completed: true }));
+
+  let uncompletedTasks = todos
+  .filter(todo => !todo.completed)
+  .sort((a, b) => a.priority - b.priority);
+
+console.log(taskNames);
+console.log(sortedByPriority);
+console.log(updatedTodos);
+console.log(uncompletedTasks);
+
+
+// Outputs tasks where completed is false
   
   // ============================================
   // 🔍 Tasks
